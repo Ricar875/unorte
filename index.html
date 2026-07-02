@@ -1,1 +1,633 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNORTE EAD | Faculdade Digital do Norte da Bahia</title>
+<meta name="description" content="UNORTE EAD - a faculdade a distância feita pra quem vive no Submédio São Francisco. Cursos de graduação 100% online, polo de apoio local e mensalidade que cabe no seu bolso.">
+<style>
+:root{
+  --rio:#0B3B54;
+  --rio-escuro:#082A3D;
+  --ouro:#D98E2B;
+  --ouro-claro:#F2B854;
+  --turquesa:#1FA9A8;
+  --areia:#F3ECDD;
+  --areia-2:#EAE1CC;
+  --tinta:#12181C;
+  --branco:#FFFFFF;
+  --serif: 'Fraunces', Georgia, serif;
+  --sans: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mono: 'Space Mono', 'Courier New', monospace;
+}
+@font-face{font-family:'Fraunces';src:local('Georgia');}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--sans);
+  background:var(--areia);
+  color:var(--tinta);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+h1,h2,h3{font-family:var(--serif);font-weight:700;letter-spacing:-0.01em;}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--turquesa);
+  display:flex;align-items:center;gap:8px;
+  margin-bottom:14px;
+}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--ouro);display:inline-block;}
+
+/* ---------- HEADER ---------- */
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(11,59,84,0.96);
+  backdrop-filter:blur(6px);
+}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;max-width:1180px;margin:0 auto;
+}
+.logo{display:flex;align-items:center;gap:10px;color:var(--branco);}
+.logo svg{width:38px;height:38px;flex-shrink:0;}
+.logo-text{font-family:var(--serif);font-size:20px;font-weight:700;line-height:1.1;}
+.logo-text span{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:var(--ouro-claro);font-weight:400;margin-top:2px;}
+.nav-links{display:flex;gap:28px;align-items:center;}
+.nav-links a{color:var(--areia);font-size:14px;font-weight:500;opacity:.85;transition:opacity .2s;}
+.nav-links a:hover{opacity:1;color:var(--ouro-claro);}
+.nav-cta{
+  background:var(--turquesa);color:var(--rio-escuro)!important;
+  padding:10px 18px;border-radius:30px;font-weight:700;font-size:13.5px;
+  display:flex;align-items:center;gap:6px;
+}
+.nav-cta:hover{background:var(--ouro-claro);}
+.burger{display:none;background:none;border:none;color:var(--branco);}
+@media(max-width:860px){
+  .nav-links{position:fixed;top:66px;left:0;right:0;background:var(--rio-escuro);flex-direction:column;padding:20px;gap:18px;transform:translateY(-150%);transition:transform .3s;border-bottom:2px solid var(--ouro);}
+  .nav-links.open{transform:translateY(0);}
+  .burger{display:block;}
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;
+  background:linear-gradient(180deg,var(--rio) 0%, var(--rio-escuro) 100%);
+  color:var(--branco);
+  padding:90px 0 40px;
+  overflow:hidden;
+}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;position:relative;z-index:2;}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;}}
+.hero h1{font-size:clamp(32px,5vw,52px);line-height:1.06;margin-bottom:18px;}
+.hero h1 em{font-style:normal;color:var(--ouro-claro);}
+.hero p.lead{font-size:17px;color:#CBDCE4;max-width:480px;margin-bottom:30px;}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:15px 26px;border-radius:8px;font-weight:700;font-size:15px;
+  border:none;cursor:pointer;transition:transform .15s, background .2s;
+}
+.btn:hover{transform:translateY(-2px);}
+.btn-primary{background:var(--ouro);color:var(--rio-escuro);}
+.btn-primary:hover{background:var(--ouro-claro);}
+.btn-outline{background:transparent;color:var(--branco);border:1.5px solid rgba(255,255,255,.4);}
+.btn-outline:hover{border-color:var(--turquesa);color:var(--turquesa);}
+
+.hero-badge{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+  border-radius:14px;padding:22px;backdrop-filter:blur(4px);
+}
+.hero-badge .row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed rgba(255,255,255,.15);font-size:14px;}
+.hero-badge .row:last-child{border-bottom:none;}
+.hero-badge .row b{font-family:var(--mono);color:var(--ouro-claro);}
+
+/* flowing river signature */
+.river{position:absolute;left:0;right:0;bottom:-2px;height:140px;z-index:1;opacity:.55;}
+.river path{fill:none;stroke:var(--turquesa);stroke-width:1.4;}
+
+/* ---------- STATS ---------- */
+.stats{background:var(--ouro);padding:0;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);text-align:center;}
+@media(max-width:760px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
+.stat{padding:26px 12px;border-right:1px solid rgba(11,59,84,.15);}
+.stat:last-child{border-right:none;}
+.stat b{display:block;font-family:var(--serif);font-size:30px;color:var(--rio-escuro);}
+.stat span{font-size:12.5px;color:var(--rio-escuro);opacity:.85;font-weight:600;}
+
+/* ---------- SECTION GENERIC ---------- */
+section{padding:78px 0;}
+.section-head{max-width:620px;margin-bottom:46px;}
+.section-head h2{font-size:clamp(26px,3.4vw,38px);}
+.section-head p{color:#4A5760;margin-top:12px;font-size:15.5px;}
+
+/* ---------- CURSOS ---------- */
+.filtros{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;}
+.filtro-btn{
+  font-family:var(--mono);font-size:12px;letter-spacing:.03em;
+  padding:9px 16px;border-radius:24px;border:1.5px solid var(--areia-2);
+  background:var(--branco);color:#4A5760;cursor:pointer;transition:all .2s;
+}
+.filtro-btn:hover{border-color:var(--turquesa);}
+.filtro-btn.ativo{background:var(--rio);border-color:var(--rio);color:var(--branco);}
+.curso-card{position:relative;overflow:hidden;}
+.curso-tag{
+  position:absolute;top:16px;right:16px;font-family:var(--mono);font-size:9.5px;
+  padding:3px 9px;border-radius:12px;font-weight:700;letter-spacing:.03em;
+}
+.cursos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;}
+.curso-card{
+  background:var(--branco);border-radius:12px;padding:24px;
+  border:1px solid var(--areia-2);transition:border-color .2s, transform .2s;
+}
+.curso-card:hover{border-color:var(--turquesa);transform:translateY(-3px);}
+.curso-card svg{width:30px;height:30px;color:var(--turquesa);margin-bottom:14px;}
+.curso-card h3{font-size:16.5px;font-family:var(--sans);font-weight:700;margin-bottom:6px;}
+.curso-card p{font-size:13px;color:#66727A;margin-bottom:12px;}
+.curso-meta{display:flex;gap:12px;font-family:var(--mono);font-size:11px;color:var(--rio);opacity:.75;}
+
+/* ---------- POR QUE ---------- */
+.porque{background:var(--rio-escuro);color:var(--branco);}
+.porque .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center;}
+@media(max-width:900px){.porque .wrap{grid-template-columns:1fr;}}
+.beneficios{display:flex;flex-direction:column;gap:22px;}
+.beneficio{display:flex;gap:16px;}
+.beneficio svg{width:24px;height:24px;color:var(--ouro-claro);flex-shrink:0;margin-top:2px;}
+.beneficio h3{font-family:var(--sans);font-size:15.5px;margin-bottom:4px;}
+.beneficio p{font-size:13.5px;color:#B9C8CF;}
+.porque-visual{
+  background:linear-gradient(160deg, var(--rio) 0%, #0d4761 100%);
+  border-radius:16px;padding:32px;border:1px solid rgba(255,255,255,.1);
+}
+.porque-visual .eyebrow{color:var(--ouro-claro);}
+.porque-visual .eyebrow::before{background:var(--turquesa);}
+.porque-visual h3{font-family:var(--serif);font-size:22px;margin-bottom:14px;}
+.porque-visual p{color:#CBDCE4;font-size:14.5px;margin-bottom:20px;}
+
+/* ---------- COMO FUNCIONA ---------- */
+.passos{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:passo;}
+@media(max-width:900px){.passos{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:520px){.passos{grid-template-columns:1fr;}}
+.passo{position:relative;padding-top:8px;}
+.passo .num{
+  font-family:var(--mono);font-size:13px;color:var(--turquesa);
+  border:1px solid var(--turquesa);border-radius:50%;
+  width:34px;height:34px;display:flex;align-items:center;justify-content:center;
+  margin-bottom:14px;
+}
+.passo h3{font-size:15px;font-family:var(--sans);margin-bottom:6px;}
+.passo p{font-size:13px;color:#66727A;}
+
+/* ---------- MOSAICO DE ALUNOS ---------- */
+.mosaico-section{background:var(--rio-escuro);}
+.mosaico-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:34px;}
+.mosaico-head .eyebrow{color:#F2B854;}
+.mosaico-head .eyebrow::before{background:var(--turquesa);}
+.mosaico-head h2{color:var(--branco);font-size:clamp(24px,3.2vw,34px);}
+.mosaico-nota{font-size:12.5px;color:#8FA4AC;max-width:280px;font-family:var(--mono);line-height:1.5;}
+.mosaico-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:14px;}
+.mosaico-grid .foto-slot:nth-child(1){grid-column:span 2;grid-row:span 2;}
+.mosaico-grid .foto-slot:nth-child(5){grid-column:span 2;}
+@media(max-width:760px){
+  .mosaico-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:130px;}
+  .mosaico-grid .foto-slot:nth-child(1){grid-column:span 2;grid-row:span 1;}
+}
+.foto-slot{
+  border-radius:12px;overflow:hidden;position:relative;
+  display:flex;align-items:flex-end;
+  background-size:cover;background-position:center;
+}
+.foto-slot::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 55%,rgba(8,42,61,.88) 100%);
+}
+.foto-slot span{
+  position:relative;z-index:1;color:#fff;font-family:var(--mono);font-size:10.5px;
+  padding:12px 14px;letter-spacing:.04em;
+}
+
+/* avatares ilustrados diversos (sem depender de banco de imagem) */
+.avatar-ilustrado{width:44px;height:44px;border-radius:50%;flex-shrink:0;}
+
+/* ---------- DEPOIMENTOS ---------- */
+.depo-section{background:var(--areia-2);}
+.depo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+@media(max-width:900px){.depo-grid{grid-template-columns:1fr;}}
+.depo{background:var(--branco);border-radius:12px;padding:26px;border-left:3px solid var(--ouro);}
+.depo p{font-size:14.5px;color:#33403A;margin-bottom:16px;font-style:italic;}
+.depo-autor{display:flex;align-items:center;gap:10px;}
+.depo-avatar{
+  width:38px;height:38px;border-radius:50%;
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-weight:700;font-size:14px;
+}
+.depo-avatar.a1{background:linear-gradient(135deg,#0B3B54,#1FA9A8);}
+.depo-avatar.a2{background:linear-gradient(135deg,#D98E2B,#F2B854);}
+.depo-avatar.a3{background:linear-gradient(135deg,#1FA9A8,#0d4761);}
+.depo-nome{font-size:13.5px;font-weight:700;}
+.depo-cidade{font-size:11.5px;color:#8A9299;font-family:var(--mono);}
+
+/* ---------- BOLSAS ---------- */
+.bolsas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+@media(max-width:900px){.bolsas-grid{grid-template-columns:1fr;}}
+.bolsa-card{
+  border:1.5px solid var(--areia-2);border-radius:12px;padding:26px;text-align:center;
+  transition:box-shadow .2s;
+}
+.bolsa-card.destaque{border-color:var(--ouro);background:var(--rio);color:var(--branco);position:relative;}
+.bolsa-card.destaque::before{
+  content:"MAIS PROCURADA";position:absolute;top:-11px;left:50%;transform:translateX(-50%);
+  background:var(--ouro);color:var(--rio-escuro);font-family:var(--mono);font-size:10px;
+  padding:4px 12px;border-radius:20px;font-weight:700;letter-spacing:.06em;
+}
+.bolsa-pct{font-family:var(--serif);font-size:42px;color:var(--turquesa);margin:10px 0;}
+.bolsa-card.destaque .bolsa-pct{color:var(--ouro-claro);}
+.bolsa-card h3{font-size:16px;margin-bottom:8px;}
+.bolsa-card p{font-size:13px;color:#66727A;margin-bottom:18px;}
+.bolsa-card.destaque p{color:#CBDCE4;}
+.bolsa-card .btn{width:100%;justify-content:center;}
+
+/* ---------- CTA FINAL ---------- */
+.cta-final{
+  background:radial-gradient(circle at 30% 30%, var(--turquesa) 0%, var(--rio-escuro) 60%);
+  color:var(--branco);text-align:center;
+}
+.cta-final h2{font-size:clamp(26px,4vw,40px);margin-bottom:16px;}
+.cta-final p{color:#CBDCE4;max-width:500px;margin:0 auto 30px;}
+.cta-final .hero-ctas{justify-content:center;}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--rio-escuro);color:#9FB3BB;padding:56px 0 26px;}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px;}
+@media(max-width:800px){.footer-grid{grid-template-columns:1fr 1fr;}}
+.footer-grid h4{color:var(--branco);font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-family:var(--mono);margin-bottom:16px;}
+.footer-grid ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.footer-grid a{font-size:13.5px;opacity:.85;}
+.footer-grid a:hover{opacity:1;color:var(--turquesa);}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.1);padding-top:22px;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12px;
+}
+.disclaimer{font-size:11.5px;opacity:.6;max-width:640px;margin-top:14px;}
+
+/* ---------- WHATSAPP FLOAT ---------- */
+.whats-float{
+  position:fixed;bottom:22px;right:22px;z-index:200;
+  background:#1FA85A;color:#fff;border-radius:50%;
+  width:58px;height:58px;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.28);
+}
+.whats-float svg{width:28px;height:28px;}
+@media(prefers-reduced-motion:no-preference){
+  .whats-float{animation:pulse 2.4s infinite;}
+}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(31,168,90,.5);}70%{box-shadow:0 0 0 14px rgba(31,168,90,0);}100%{box-shadow:0 0 0 0 rgba(31,168,90,0);}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#topo" class="logo">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="23" stroke="#D98E2B" stroke-width="1.5"/>
+        <path d="M6 28c5-4 9 4 14 0s9-4 14 0 8 4 8 4" stroke="#1FA9A8" stroke-width="2" stroke-linecap="round"/>
+        <path d="M14 20l10-7 10 7-10 6-10-6z" fill="#F2B854"/>
+        <path d="M24 26v6" stroke="#F2B854" stroke-width="1.6"/>
+      </svg>
+      <span class="logo-text">UNORTE<span>FACULDADE DIGITAL · NORTE DA BAHIA</span></span>
+    </a>
+    <button class="burger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Abrir menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <nav class="nav-links">
+      <a href="#cursos">Cursos EAD</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#bolsas">Bolsas e descontos</a>
+      <a href="#depoimentos">Alunos</a>
+      <a class="nav-cta" id="navWhats" href="#" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8.9 8.9 0 0 0 12 4a8.96 8.96 0 0 0-7.8 13.4L3 21l3.7-1a9 9 0 0 0 5.3 1.7A9 9 0 0 0 21 12.9a8.9 8.9 0 0 0-3.4-6.6zm-5.6 13.8a7.5 7.5 0 0 1-3.8-1l-.3-.2-2.3.6.6-2.2-.2-.3A7.5 7.5 0 1 1 12 20.1zm4.1-5.6c-.2-.1-1.3-.7-1.5-.7s-.4-.1-.5.1-.6.7-.7.9-.3.2-.5.1a6.1 6.1 0 0 1-1.8-1.1 6.7 6.7 0 0 1-1.2-1.6c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4c0-.1-.5-1.3-.7-1.8s-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3a2.9 2.9 0 0 0-.9 2.1 5 5 0 0 0 1 2.6 11.4 11.4 0 0 0 4.5 4c.6.2 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.3-.5 1.5-1s.2-.9.1-1c0-.1-.2-.2-.4-.3z"/></svg>
+        WhatsApp
+      </a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="topo">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow" style="color:#F2B854;">Faculdade EAD do Submédio São Francisco</div>
+      <h1>A força do rio<br>que <em>banha o sertão</em><br>agora forma o seu diploma.</h1>
+      <p class="lead">Graduação 100% a distância pensada pra quem vive em Paulo Afonso, Delmiro Gouveia, Petrolândia e região. Estuda no seu ritmo, com apoio de verdade, perto de casa.</p>
+      <div class="hero-ctas">
+        <a href="#cursos" class="btn btn-primary">Ver cursos de graduação</a>
+        <a href="#" id="heroWhats" target="_blank" rel="noopener" class="btn btn-outline">Falar com um consultor</a>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <div class="row"><span>Modalidade</span><b>100% EAD</b></div>
+      <div class="row"><span>Polo de apoio</span><b>Paulo Afonso · BA</b></div>
+      <div class="row"><span>Mensalidade a partir de</span><b>R$ 99,90*</b></div>
+      <div class="row"><span>Início das aulas</span><b>Matrículas abertas</b></div>
+    </div>
+  </div>
+  <svg class="river" viewBox="0 0 1200 140" preserveAspectRatio="none">
+    <path d="M0,80 C150,40 300,120 450,80 C600,40 750,120 900,80 C1050,40 1150,90 1200,70" />
+    <path d="M0,110 C150,70 300,140 450,110 C600,70 750,140 900,110 C1050,70 1150,120 1200,100" opacity=".5"/>
+  </svg>
+</section>
+
+<div class="stats">
+  <div class="wrap stats-grid">
+    <div class="stat"><b id="statAlunos">2.400+</b><span>Alunos na região</span></div>
+    <div class="stat"><b>14</b><span>Cidades atendidas</span></div>
+    <div class="stat"><b>10</b><span>Cursos de graduação</span></div>
+    <div class="stat"><b>4.8/5</b><span>Nota dos alunos</span></div>
+  </div>
+</div>
+
+<section id="cursos">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Graduação EAD</div>
+      <h2>Escolha o curso que vai mudar sua história</h2>
+      <p>Cursos reconhecidos, com aulas gravadas, tutoria ao vivo e material didático liberado desde o primeiro dia de matrícula.</p>
+    </div>
+    <div class="filtros" id="filtrosCursos"></div>
+    <div class="cursos-grid" id="cursosGrid"></div>
+  </div>
+</section>
+
+<section class="porque">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow" style="color:#F2B854;">Por que a UNORTE</div>
+      <h2 style="font-size:32px;margin-bottom:26px;">Feita pra quem mora longe da capital, não pra quem estuda longe de casa</h2>
+      <div class="beneficios">
+        <div class="beneficio">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="1.6"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.6"/></svg>
+          <div><h3>Polo de apoio em Paulo Afonso</h3><p>Você tem onde fazer prova, tirar dúvida e usar biblioteca — sem precisar viajar pra capital.</p></div>
+        </div>
+        <div class="beneficio">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/></svg>
+          <div><h3>Estuda no horário que der</h3><p>Aulas gravadas liberadas toda semana, disponíveis 24h no app e no computador.</p></div>
+        </div>
+        <div class="beneficio">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.6"/><circle cx="10" cy="7" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M20 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.6"/></svg>
+          <div><h3>Tutor humano, não só robô</h3><p>Cada turma tem um tutor de verdade respondendo suas dúvidas — o app é o meio, não o fim.</p></div>
+        </div>
+        <div class="beneficio">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 3v18h18" stroke="currentColor" stroke-width="1.6"/><path d="M7 15l4-5 3 3 5-7" stroke="currentColor" stroke-width="1.6"/></svg>
+          <div><h3>Mensalidade do tamanho do sertão</h3><p>Sem taxa de matrícula. Desconto crescente pra quem paga em dia.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="porque-visual">
+      <div class="eyebrow">Simule agora</div>
+      <h3>Quanto custa estudar na UNORTE?</h3>
+      <p>Fale com um consultor pelo WhatsApp e receba, na hora, o valor do seu curso com desconto de matrícula antecipada.</p>
+      <a href="#" id="simulaWhats" target="_blank" rel="noopener" class="btn btn-primary">Simular mensalidade</a>
+    </div>
+  </div>
+</section>
+
+<section id="como-funciona">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Passo a passo</div>
+      <h2>Do interesse ao diploma em 5 etapas</h2>
+    </div>
+    <div class="passos">
+      <div class="passo"><div class="num">1</div><h3>Inscrição</h3><p>Preencha seus dados pelo site ou WhatsApp, sem custo.</p></div>
+      <div class="passo"><div class="num">2</div><h3>Escolha do curso</h3><p>Um consultor te ajuda a escolher com base no seu objetivo.</p></div>
+      <div class="passo"><div class="num">3</div><h3>Matrícula</h3><p>Documentação simples, tudo pode ser enviado pelo celular.</p></div>
+      <div class="passo"><div class="num">4</div><h3>Aulas e estágio</h3><p>Aulas no AVA + estágio supervisionado com apoio do polo.</p></div>
+      <div class="passo"><div class="num">5</div><h3>Diploma</h3><p>Colação de grau na sua cidade, com sua família por perto.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="mosaico-section">
+  <div class="wrap">
+    <div class="mosaico-head">
+      <div>
+        <div class="eyebrow">Nossos alunos em ação</div>
+        <h2>Aqui é onde entram as fotos da sua turma</h2>
+      </div>
+      <p class="mosaico-nota">Fotos ilustrativas de banco gratuito (Pexels, uso comercial livre). Assim que você tiver fotos reais dos seus alunos, é só trocar o link no código.</p>
+    </div>
+    <div class="mosaico-grid">
+      <div class="foto-slot" style="background-image:url('https://images.pexels.com/photos/31513418/pexels-photo-31513418.jpeg?auto=compress&cs=tinysrgb&w=900')"><span>FORMATURA</span></div>
+      <div class="foto-slot" style="background-image:url('https://images.pexels.com/photos/5553049/pexels-photo-5553049.jpeg?auto=compress&cs=tinysrgb&w=700')"><span>POLO DE APOIO</span></div>
+      <div class="foto-slot" style="background-image:url('https://images.pexels.com/photos/8197511/pexels-photo-8197511.jpeg?auto=compress&cs=tinysrgb&w=700')"><span>AULA</span></div>
+      <div class="foto-slot" style="background-image:url('https://images.pexels.com/photos/8547344/pexels-photo-8547344.jpeg?auto=compress&cs=tinysrgb&w=700')"><span>ESTÁGIO</span></div>
+      <div class="foto-slot" style="background-image:url('https://images.pexels.com/photos/6147382/pexels-photo-6147382.jpeg?auto=compress&cs=tinysrgb&w=900')"><span>TURMA</span></div>
+      <div class="foto-slot" style="background-image:url('https://images.pexels.com/photos/356086/pexels-photo-356086.jpeg?auto=compress&cs=tinysrgb&w=700')"><span>CAMPUS</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="depo-section" id="depoimentos">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Quem estuda, aprova</div>
+      <h2>Gente daqui, formada por aqui</h2>
+    </div>
+    <div class="depo-grid">
+      <div class="depo">
+        <p>"Trabalho o dia inteiro no comércio e consegui terminar Administração estudando à noite. O polo em Paulo Afonso ajudou muito na prova."</p>
+        <div class="depo-autor"><div class="depo-avatar a1">MS</div><div><div class="depo-nome">Marilene Santos</div><div class="depo-cidade">Paulo Afonso · BA</div></div></div>
+      </div>
+      <div class="depo">
+        <p>"Fiz Pedagogia pensando em dar aula na minha cidade mesmo. Hoje sou professora concursada em Delmiro Gouveia."</p>
+        <div class="depo-autor"><div class="depo-avatar a2">JC</div><div><div class="depo-nome">João Carlos Lima</div><div class="depo-cidade">Delmiro Gouveia · AL</div></div></div>
+      </div>
+      <div class="depo">
+        <p>"O suporte pelo WhatsApp foi o diferencial. Sempre que travava numa disciplina, alguém respondia no mesmo dia."</p>
+        <div class="depo-autor"><div class="depo-avatar a3">RA</div><div><div class="depo-nome">Rita de Almeida</div><div class="depo-cidade">Petrolândia · PE</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="bolsas">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Bolsas e formas de ingresso</div>
+      <h2>Tem um jeito de caber no seu bolso</h2>
+    </div>
+    <div class="bolsas-grid">
+      <div class="bolsa-card">
+        <h3>Nota do ENEM</h3>
+        <div class="bolsa-pct">até 40%</div>
+        <p>Desconto proporcional à sua nota do ENEM, sem precisar refazer prova.</p>
+        <a href="#" class="btn btn-outline whats-link" style="border-color:#0B3B54;color:#0B3B54;">Consultar minha nota</a>
+      </div>
+      <div class="bolsa-card destaque">
+        <h3>Bolsa Primeira Turma</h3>
+        <div class="bolsa-pct">50%</div>
+        <p>Pra quem se matricular nas próximas turmas do seu curso, direto na sua cidade.</p>
+        <a href="#" class="btn btn-primary whats-link">Garantir minha vaga</a>
+      </div>
+      <div class="bolsa-card">
+        <h3>Transferência</h3>
+        <div class="bolsa-pct">livre</div>
+        <p>Já começou a faculdade em outro lugar? Aproveitamos suas disciplinas cursadas.</p>
+        <a href="#" class="btn btn-outline whats-link" style="border-color:#0B3B54;color:#0B3B54;">Avaliar meu histórico</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="wrap">
+    <h2>Sua vaga tá esperando aqui, no seu Norte.</h2>
+    <p>Fale agora com a nossa equipe e comece a estudar sem sair da sua cidade.</p>
+    <div class="hero-ctas">
+      <a href="#" id="finalWhats" target="_blank" rel="noopener" class="btn btn-primary">Chamar no WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="color:#fff;margin-bottom:14px;">
+          <svg viewBox="0 0 48 48" width="34" height="34" fill="none"><circle cx="24" cy="24" r="23" stroke="#D98E2B" stroke-width="1.5"/><path d="M6 28c5-4 9 4 14 0s9-4 14 0 8 4 8 4" stroke="#1FA9A8" stroke-width="2" stroke-linecap="round"/><path d="M14 20l10-7 10 7-10 6-10-6z" fill="#F2B854"/></svg>
+          <span class="logo-text">UNORTE</span>
+        </div>
+        <p style="font-size:13px;max-width:260px;">Faculdade digital construída pro Submédio São Francisco: Paulo Afonso, Delmiro Gouveia, Petrolândia, Glória e cidades vizinhas.</p>
+      </div>
+      <div>
+        <h4>Graduação</h4>
+        <ul>
+          <li><a href="#cursos">Cursos EAD</a></li>
+          <li><a href="#bolsas">Bolsas e descontos</a></li>
+          <li><a href="#como-funciona">Como funciona</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="#depoimentos">Alunos</a></li>
+          <li><a href="#topo">Sobre a UNORTE</a></li>
+          <li><a href="#" id="footerWhats" target="_blank" rel="noopener">Trabalhe conosco</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Fale com a gente</h4>
+        <ul>
+          <li><a href="#" id="footerWhats2" target="_blank" rel="noopener">WhatsApp (75) 99177-1095</a></li>
+          <li><a href="#">Paulo Afonso · BA</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 UNORTE Faculdade Digital. Todos os direitos reservados.</span>
+      <span>Desenvolvido por Digital Chevalier Card</span>
+    </div>
+    <p class="disclaimer">*Template comercial ilustrativo. Substitua nomes de cursos, valores, código e-MEC e demais dados institucionais pelas informações reais da instituição antes de publicar.</p>
+  </div>
+</footer>
+
+<a href="#" id="floatWhats" target="_blank" rel="noopener" class="whats-float" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8.9 8.9 0 0 0 12 4a8.96 8.96 0 0 0-7.8 13.4L3 21l3.7-1a9 9 0 0 0 5.3 1.7A9 9 0 0 0 21 12.9a8.9 8.9 0 0 0-3.4-6.6zm-5.6 13.8a7.5 7.5 0 0 1-3.8-1l-.3-.2-2.3.6.6-2.2-.2-.3A7.5 7.5 0 1 1 12 20.1z"/></svg>
+</a>
+
+<script>
+// ===================== CONFIG =====================
+const CONFIG = {
+  NOME_FACULDADE: "UNORTE",
+  WHATSAPP_NUMERO: "5575991771095", // (75) 99177-1095
+  WHATSAPP_MENSAGEM: "Olá! Vi o site da UNORTE e quero saber mais sobre os cursos de graduação EAD.",
+  CURSOS: [
+    { nome: "Administração", desc: "Gestão, liderança e finanças pra empreender ou crescer na carreira.", duracao: "4 anos", categoria: "Negócios" },
+    { nome: "Gestão Comercial", desc: "Vendas, negociação e gestão de equipes comerciais.", duracao: "2 anos", categoria: "Negócios" },
+    { nome: "Ciências Contábeis", desc: "Contabilidade, tributos e gestão financeira.", duracao: "4 anos", categoria: "Negócios" },
+    { nome: "Logística", desc: "Cadeia de suprimentos, estoque e transporte.", duracao: "2 anos", categoria: "Negócios" },
+    { nome: "Pedagogia", desc: "Formação pra atuar na educação infantil e anos iniciais.", duracao: "4 anos", categoria: "Educação" },
+    { nome: "Educação Física", desc: "Licenciatura pra atuar em escolas, academias e projetos sociais.", duracao: "4 anos", categoria: "Educação" },
+    { nome: "Letras", desc: "Licenciatura em Língua Portuguesa pra lecionar no ensino básico.", duracao: "4 anos", categoria: "Educação" },
+    { nome: "Análise e Desenv. de Sistemas", desc: "Programação, banco de dados e desenvolvimento web.", duracao: "2 anos", categoria: "Tecnologia" },
+    { nome: "Marketing Digital", desc: "Redes sociais, tráfego pago e estratégia de marca.", duracao: "2 anos", categoria: "Tecnologia" },
+    { nome: "Redes de Computadores", desc: "Infraestrutura, redes e suporte técnico em TI.", duracao: "2 anos", categoria: "Tecnologia" },
+    { nome: "Serviço Social", desc: "Atuação em políticas públicas e assistência social.", duracao: "4 anos", categoria: "Saúde & Social" },
+    { nome: "Gestão Hospitalar", desc: "Administração de clínicas, hospitais e unidades de saúde.", duracao: "2 anos", categoria: "Saúde & Social" },
+    { nome: "Nutrição Esportiva (Pós)", desc: "Especialização voltada pra performance e saúde.", duracao: "1 ano", categoria: "Saúde & Social" },
+    { nome: "Gestão Pública", desc: "Administração de órgãos e políticas do setor público.", duracao: "2 anos", categoria: "Humanas" },
+    { nome: "Psicanálise (Livre)", desc: "Curso livre de formação em teoria psicanalítica.", duracao: "1 ano", categoria: "Humanas" }
+  ]
+};
+// ====================================================
+
+function linkWhats(msg){
+  const texto = encodeURIComponent(msg || CONFIG.WHATSAPP_MENSAGEM);
+  return `https://wa.me/${CONFIG.WHATSAPP_NUMERO}?text=${texto}`;
+}
+
+document.querySelectorAll('#navWhats,#heroWhats,#simulaWhats,#finalWhats,#footerWhats,#footerWhats2,#floatWhats').forEach(el=>{
+  el.href = linkWhats();
+});
+document.querySelectorAll('.whats-link').forEach(el=>{
+  el.href = linkWhats();
+  el.target = "_blank"; el.rel = "noopener";
+});
+
+const cursoIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg>`;
+
+const CORES_CATEGORIA = {
+  "Negócios": { bg:"#D98E2B", tx:"#2a1d0e" },
+  "Educação": { bg:"#1FA9A8", tx:"#082A3D" },
+  "Tecnologia": { bg:"#0B3B54", tx:"#F3ECDD" },
+  "Saúde & Social": { bg:"#F2B854", tx:"#2a1d0e" },
+  "Humanas": { bg:"#66727A", tx:"#F3ECDD" }
+};
+
+const grid = document.getElementById('cursosGrid');
+const filtrosEl = document.getElementById('filtrosCursos');
+const categorias = ["Todos", ...new Set(CONFIG.CURSOS.map(c => c.categoria))];
+let categoriaAtiva = "Todos";
+
+function renderCursos(){
+  grid.innerHTML = "";
+  const lista = categoriaAtiva === "Todos" ? CONFIG.CURSOS : CONFIG.CURSOS.filter(c => c.categoria === categoriaAtiva);
+  lista.forEach(c=>{
+    const cor = CORES_CATEGORIA[c.categoria] || { bg:"#1FA9A8", tx:"#082A3D" };
+    const card = document.createElement('div');
+    card.className = 'curso-card';
+    card.innerHTML = `
+      <span class="curso-tag" style="background:${cor.bg};color:${cor.tx};">${c.categoria}</span>
+      ${cursoIcon}
+      <h3>${c.nome}</h3>
+      <p>${c.desc}</p>
+      <div class="curso-meta"><span>${c.duracao}</span><span>EAD</span></div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function renderFiltros(){
+  filtrosEl.innerHTML = "";
+  categorias.forEach(cat=>{
+    const btn = document.createElement('button');
+    btn.className = 'filtro-btn' + (cat === categoriaAtiva ? ' ativo' : '');
+    btn.textContent = cat;
+    btn.onclick = () => { categoriaAtiva = cat; renderFiltros(); renderCursos(); };
+    filtrosEl.appendChild(btn);
+  });
+}
+
+renderFiltros();
+renderCursos();
+</script>
+</body>
+</html>
 
